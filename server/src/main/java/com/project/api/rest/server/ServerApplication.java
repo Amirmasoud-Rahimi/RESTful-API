@@ -1,30 +1,19 @@
 package com.project.api.rest.server;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.project.api.rest.model.Post;
-import org.apache.commons.io.IOUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.io.*;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.project.api.rest.model", "com.project.api.rest.server", "com.project.api.rest.service"})
+@EntityScan(basePackages = {"com.project.api.rest.model", "com.project.api.rest.server", "com.project.api.rest.service"})
+@EnableJpaRepositories(basePackages = {"com.project.api.rest.service.repository"})
 public class ServerApplication {
 
     public static void main(String[] args) throws URISyntaxException, IOException {
         SpringApplication.run(ServerApplication.class, args);
-        URL url = new URL("https://jsonplaceholder.typicode.com/posts");
-        String json = IOUtils.toString(url, StandardCharsets.UTF_8);
-        ObjectMapper mapper=new ObjectMapper();
-        List<Post> participantJsonList = mapper.readValue(json, new TypeReference<List<Post>>(){});
-
-
     }
 }
