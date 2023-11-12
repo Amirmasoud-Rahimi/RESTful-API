@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PostService {
     List<Post> getPostListFromUrl(String url) throws IOException;
+    void savePostList() throws IOException;
 }
