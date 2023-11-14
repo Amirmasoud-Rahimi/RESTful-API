@@ -2,10 +2,12 @@ package com.project.api.rest.service.business;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.api.rest.model.ToDo;
+import com.project.api.rest.model.entity.ToDo;
 import com.project.api.rest.service.api.ToDoService;
 import com.project.api.rest.service.repository.ToDoRepository;
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -15,10 +17,21 @@ import java.util.List;
 
 @Service
 public class ToDoServiceImpl implements ToDoService {
+    @Value("${toDoUrl}")
+    private String toDoUrl;
     private final ToDoRepository toDoRepository;
 
     public ToDoServiceImpl(ToDoRepository toDoRepository) {
         this.toDoRepository = toDoRepository;
+    }
+
+    public List<ToDo> getAllToDos() {
+        Iterable<ToDo> toDoIterable = toDoRepository.findAll();
+        return Streamable.of(toDoIterable).toList();
+    }
+
+    public List<ToDo> getToDoListByUserIdAndCompleted(int userId, boolean completed) {
+        return toDoRepository.getByUserIdAndCompleted(userId, completed);
     }
 
     public List<ToDo> getToDoListFromUrl(String urlStr) throws IOException {
@@ -30,7 +43,7 @@ public class ToDoServiceImpl implements ToDoService {
     }
 
     public void saveToDoList() throws IOException {
-        List<ToDo> toDoList = getToDoListFromUrl("https://jsonplaceholder.typicode.com/todos");//TODO read from config
+        List<ToDo> toDoList = getToDoListFromUrl(toDoUrl);
         toDoRepository.saveAll(toDoList);
     }
 }

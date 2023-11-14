@@ -2,13 +2,22 @@ drop table if exists COMMENT;
 drop table if exists TO_DO;
 drop table if exists POST;
 
+create table POST
+(
+    user_id number,
+    id      number primary key not null,
+    title   varchar2,
+    body    varchar2
+);
+
 create table COMMENT
 (
     post_id number,
     id      number primary key not null,
     name    varchar2,
     email   varchar2,
-    body    varchar2( MAX)
+    body    varchar2( MAX),
+    foreign key (post_id) references POST (id)
 );
 
 create table TO_DO
@@ -17,12 +26,4 @@ create table TO_DO
     id        number primary key not null,
     title     varchar2,
     completed boolean
-);
-
-create table POST
-(
-    user_id number,
-    id      number primary key not null,
-    title   varchar2,
-    body    varchar2
 );
