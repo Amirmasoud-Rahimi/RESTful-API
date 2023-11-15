@@ -3,6 +3,7 @@ package com.project.api.rest.server.controller;
 import com.project.api.rest.model.dto.PostDto;
 import com.project.api.rest.model.entity.Comment;
 import com.project.api.rest.model.entity.Post;
+import com.project.api.rest.service.aop.RestApiLogger;
 import com.project.api.rest.service.api.CommentService;
 import com.project.api.rest.service.api.PostService;
 import io.swagger.annotations.Api;
@@ -87,6 +88,7 @@ public class PostController {
             @ApiResponse(code = 200, message = "Successfully create Entity"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
+    @RestApiLogger
     @PostMapping
     public void createPost(@RequestBody PostDto postDto) {
         postService.createPost(postDto);
