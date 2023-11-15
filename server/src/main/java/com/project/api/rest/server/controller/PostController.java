@@ -37,7 +37,7 @@ public class PostController {
     }
 
     @ApiOperation(value = "getAllPostsByPagination", response = ResponseEntity.class)
-    @ApiResponses(value = { //Swagger Document
+    @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully fetch data"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
@@ -50,7 +50,7 @@ public class PostController {
     }
 
     @ApiOperation(value = "getPostById", response = ResponseEntity.class)
-    @ApiResponses(value = { //Swagger Document
+    @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully fetch data"),
             @ApiResponse(code = 404, message = "Could not find entity with Submitted Id"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
@@ -62,7 +62,7 @@ public class PostController {
     }
 
     @ApiOperation(value = "getCommentListByPostId", response = ResponseEntity.class)
-    @ApiResponses(value = { //Swagger Document
+    @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully fetch data"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
@@ -73,7 +73,7 @@ public class PostController {
     }
 
     @ApiOperation(value = "getPostListByTitle", response = ResponseEntity.class)
-    @ApiResponses(value = { //Swagger Document
+    @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully fetch data"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
@@ -84,35 +84,38 @@ public class PostController {
     }
 
     @ApiOperation(value = "createPost", response = void.class)
-    @ApiResponses(value = { //Swagger Document
-            @ApiResponse(code = 200, message = "Successfully create Entity"),
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Post Entity Created Successfully"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
     @RestApiLogger
     @PostMapping
-    public void createPost(@RequestBody PostDto postDto) {
+    public ResponseEntity<String> createPost(@RequestBody PostDto postDto) {
         postService.createPost(postDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Post Entity Created Successfully. postId = " + postDto.getId());
     }
 
     @ApiOperation(value = "updatePostById", response = void.class)
-    @ApiResponses(value = { //Swagger Document
-            @ApiResponse(code = 200, message = "Successfully Update Entity"),
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Post Entity Updated Successfully"),
             @ApiResponse(code = 404, message = "Could not find Claim with Submitted Id"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
     @PatchMapping("/posts/{postId}")
-    public void updatePostById(@PathVariable(name = "postId") int postId, @RequestBody PostDto postDto) {
+    public ResponseEntity<String> updatePostById(@PathVariable(name = "postId") int postId, @RequestBody PostDto postDto) {
         postService.updatePostByPostId(postId, postDto);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Post Entity Updated Successfully. postId = " + postId);
     }
 
     @ApiOperation(value = "deletePostById", response = void.class)
-    @ApiResponses(value = { //Swagger Document
-            @ApiResponse(code = 200, message = "Successfully Delete Entity"),
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Post Entity Deleted Successfully"),
             @ApiResponse(code = 404, message = "Could not find Entity with Submitted Id"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
     @DeleteMapping("/posts/{postId}")
-    public void deletePostById(@PathVariable(name = "postId") int postId) {
+    public ResponseEntity<String> deletePostById(@PathVariable(name = "postId") int postId) {
         postService.deletePostByPostId(postId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Post Entity Deleted Successfully. postId = " + postId);
     }
 }

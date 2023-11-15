@@ -1,6 +1,7 @@
 package com.project.api.rest.service.aop;
 
 import com.project.api.rest.model.dto.PostDto;
+import com.project.api.rest.model.entity.Comment;
 import com.project.api.rest.model.exception.EntityNotFoundException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -21,8 +22,14 @@ public class RestApiLoggerAspect {
     public void logBrmsExecution(JoinPoint joinPoint) {
         String method = joinPoint.getSignature().getName();
         Object arg = joinPoint.getArgs()[0];
-        PostDto postDto = (PostDto) arg;
-        logger.info("Method [" + method + "] gets called and post entity saved with id : " + postDto.getId());
+        int objectId;
+        if(arg instanceof PostDto){
+            objectId = ((PostDto) arg).getId();
+        }else{
+            objectId = ((Comment) arg).getId();
+        }
+
+        logger.info("Method [" + method + "] gets called and entity saved with id : " + objectId);
     }
 
     @AfterThrowing(value = "execution(* com.project.api.rest.service.api.PostService.getPostById(..))",

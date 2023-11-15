@@ -2,6 +2,7 @@ package com.project.api.rest.server.controller;
 
 import com.project.api.rest.model.dto.CommentDto;
 import com.project.api.rest.model.entity.Comment;
+import com.project.api.rest.service.aop.RestApiLogger;
 import com.project.api.rest.service.api.CommentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,7 +33,7 @@ public class CommentController {
     }
 
     @ApiOperation(value = "getAllCommentsByPagination", response = ResponseEntity.class)
-    @ApiResponses(value = { //Swagger Document
+    @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully fetch data"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
@@ -45,7 +46,7 @@ public class CommentController {
     }
 
     @ApiOperation(value = "getCommentListByPostId", response = ResponseEntity.class)
-    @ApiResponses(value = { //Swagger Document
+    @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully fetch data"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
@@ -56,34 +57,38 @@ public class CommentController {
     }
 
     @ApiOperation(value = "createComment", response = void.class)
-    @ApiResponses(value = { //Swagger Document
-            @ApiResponse(code = 200, message = "Successfully create entity"),
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Comment Entity Created Successfully"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
+    @RestApiLogger
     @PostMapping
-    public void createComment(@RequestBody CommentDto commentDto) {
+    public ResponseEntity<String> createComment(@RequestBody CommentDto commentDto) {
         commentService.createComment(commentDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Comment Entity Created Successfully. commentId = " + commentDto.getId());
     }
 
     @ApiOperation(value = "updateCommentById", response = void.class)
-    @ApiResponses(value = { //Swagger Document
-            @ApiResponse(code = 200, message = "Successfully update entity"),
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Comment Entity Updated Successfully"),
             @ApiResponse(code = 404, message = "Could not find entity with Submitted Id"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
     @PatchMapping("/comments/{commentId}")
-    public void updateCommentById(@PathVariable(name = "commentId") int commentId, @RequestBody CommentDto commentDto) {
+    public ResponseEntity<String> updateCommentById(@PathVariable(name = "commentId") int commentId, @RequestBody CommentDto commentDto) {
         commentService.updateCommentByCommentId(commentId, commentDto);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Comment Entity Updated Successfully. commentId = " + commentId);
     }
 
     @ApiOperation(value = "deleteCommentById", response = void.class)
-    @ApiResponses(value = { //Swagger Document
-            @ApiResponse(code = 200, message = "Successfully delete entity"),
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Comment Entity Deleted Successfully"),
             @ApiResponse(code = 404, message = "Could not find entity with Submitted Id"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
     @DeleteMapping("/comments/{commentId}")
-    public void deleteCommentById(@PathVariable(name = "commentId") int commentId) {
+    public ResponseEntity<String> deleteCommentById(@PathVariable(name = "commentId") int commentId) {
         commentService.deleteCommentByCommentId(commentId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Comment Entity Deleted Successfully. commentId = " + commentId);
     }
 }

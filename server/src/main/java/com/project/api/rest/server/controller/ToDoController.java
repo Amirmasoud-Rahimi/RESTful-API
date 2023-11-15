@@ -26,7 +26,7 @@ public class ToDoController {
     }
 
     @ApiOperation(value = "getAllToDos", response = ResponseEntity.class)
-    @ApiResponses(value = { //Swagger Document
+    @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully fetch data"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
@@ -35,14 +35,13 @@ public class ToDoController {
         return ResponseEntity.status(HttpStatus.OK).body(toDoService.getAllToDos());
     }
 
-    @ApiOperation(value = "getToDoById", response = ResponseEntity.class)
-    @ApiResponses(value = { //Swagger Document
+    @ApiOperation(value = "getToDoListByUserIdAndCompleted", response = ResponseEntity.class)
+    @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully fetch data"),
-            @ApiResponse(code = 404, message = "Could not find Entity with Submitted Id"),
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
     @GetMapping("/todos")
-    public ResponseEntity<List<ToDo>> getToDoById(
+    public ResponseEntity<List<ToDo>> getToDoListByUserIdAndCompleted(
             @RequestParam(value = "userId") int userId, @RequestParam(value = "completed") boolean completed) {
         List<ToDo> toDoList = toDoService.getToDoListByUserIdAndCompleted(userId, completed);
         return ResponseEntity.status(HttpStatus.OK).body(toDoList);
