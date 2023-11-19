@@ -36,7 +36,7 @@ public class ServerApplication {
     @EventListener(ApplicationReadyEvent.class)
     public void doSomethingAfterStartup() throws IOException {
         logger.info("Hello World!, Rest Api Application just started up");
-        logger.info("please wait.Date is fetching from url and saving in h2 db");
+        logger.info("please wait.Data is fetching from url and saving in h2 db");
         postService.savePostList();
         commentService.saveCommentList();
         toDoService.saveToDoList();
