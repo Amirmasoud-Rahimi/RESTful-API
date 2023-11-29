@@ -12,6 +12,12 @@ import org.springframework.stereotype.Component;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Component
 public class AppStartupListener {
@@ -27,27 +33,41 @@ public class AppStartupListener {
     }
 
     @EventListener(ApplicationReadyEvent.class)
-    public void startupListener() throws IOException {
-        fetchAndSaveData();
+    public void startupListener() throws InterruptedException, URISyntaxException, IOException {
+        logger.info("please wait.Data is fetching from url and saving in h2 db using ExecutorService");
+        List<Callable<Void>> taskList = getCallables();
+        ExecutorService executor = Executors.newFixedThreadPool(3);
+        executor.invokeAll(taskList);
+        logger.info("save data completed");
         launchBrowser();
     }
 
-    private void fetchAndSaveData() throws IOException {
-        logger.info("please wait.Data is fetching from url and saving in h2 db");
-        postService.savePostList();
-        commentService.saveCommentList();
-        toDoService.saveToDoList();
-        logger.info("save data completed");
+    private List<Callable<Void>> getCallables() {
+        Callable<Void> savePostsThread = () -> {
+            postService.savePostList();
+            return null;
+        };
+        Callable<Void> saveCommentsThread = () -> {
+            commentService.saveCommentList();
+            return null;
+        };
+        Callable<Void> saveToDosThread = () -> {
+            toDoService.saveToDoList();
+            return null;
+        };
+
+        List<Callable<Void>> taskList = new ArrayList<>();
+        taskList.add(savePostsThread);
+        taskList.add(saveCommentsThread);
+        taskList.add(saveToDosThread);
+
+        return taskList;
     }
 
-    public void launchBrowser() {
+    public void launchBrowser() throws URISyntaxException, IOException {
         System.setProperty("java.awt.headless", "false");
         Desktop desktop = Desktop.getDesktop();
-        try {
-            desktop.browse(new URI("http://localhost:8080/swagger-ui.html"));
-            desktop.browse(new URI("http://localhost:8080/h2"));
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-        }
+        desktop.browse(new URI("http://localhost:8080/swagger-ui.html"));
+        desktop.browse(new URI("http://localhost:8080/h2"));
     }
 }

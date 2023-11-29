@@ -16,8 +16,7 @@ create table COMMENT
     id      number primary key not null,
     name    varchar2,
     email   varchar2,
-    body    varchar2( MAX),
-    foreign key (post_id) references POST (id)
+    body    varchar2( MAX)
 );
 
 create table TO_DO

@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,6 +32,7 @@ public class ToDoController {
             @ApiResponse(code = 500, message = "Error occurred in method process"),
     })
     @GetMapping
+    @CrossOrigin //Angular CORS Error Fixing
     public ResponseEntity<List<ToDo>> getAllToDos() {
         return ResponseEntity.status(HttpStatus.OK).body(toDoService.getAllToDos());
     }
