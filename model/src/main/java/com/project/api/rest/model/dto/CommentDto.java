@@ -19,16 +19,6 @@ public class CommentDto {
     private String body;
     private int postId;
 
-    public static CommentDto mapCommentToCommentDto(Comment comment) {
-        return CommentDto.builder()
-                .id(comment.getId())
-                .name(comment.getName())
-                .email(comment.getEmail())
-                .body(comment.getBody())
-                .postId(comment.getPostId())
-                .build();
-    }
-
     public static Comment mapCommentDtoToComment(CommentDto commentDto) {
         Comment comment = new Comment();
         comment.setId(commentDto.getId());

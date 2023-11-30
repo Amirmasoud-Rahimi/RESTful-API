@@ -10,6 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/postApi")
@@ -58,6 +62,8 @@ public class PostController {
     @GetMapping("/posts/{postId}")
     public ResponseEntity<Post> getPostById(@PathVariable("postId") int postId) {
         Post post = postService.getPostById(postId);
+        post.add(linkTo(methodOn(PostController.class).getPostById(postId)).withSelfRel());
+        post.add(linkTo(methodOn(PostController.class).getAllPostsByPagination(0, 10)).withRel(IanaLinkRelations.COLLECTION));
         return ResponseEntity.status(HttpStatus.OK).body(post);
     }
 

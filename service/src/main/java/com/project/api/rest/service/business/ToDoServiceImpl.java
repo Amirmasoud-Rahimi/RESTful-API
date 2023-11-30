@@ -31,7 +31,7 @@ public class ToDoServiceImpl implements ToDoService {
     }
 
     public List<ToDo> getToDoListByUserIdAndCompleted(int userId, boolean completed) {
-        return toDoRepository.getByUserIdAndCompleted(userId, completed);
+        return toDoRepository.getToDoByUserIdAndCompleted(userId, completed);
     }
 
     public List<ToDo> getToDoListFromUrl(String urlStr) throws IOException {

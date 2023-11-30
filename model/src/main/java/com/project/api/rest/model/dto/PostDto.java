@@ -18,15 +18,6 @@ public class PostDto {
     private String title;
     private String body;
 
-    public static PostDto mapPostToPostDto(Post post) {
-        return PostDto.builder()
-                .id(post.getId())
-                .userId(post.getUserId())
-                .title(post.getTitle())
-                .body(post.getBody())
-                .build();
-    }
-
     public static Post mapPostDtoToPost(PostDto postDto) {
         Post post = new Post();
         post.setId(postDto.getId());

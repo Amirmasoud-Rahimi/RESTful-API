@@ -3,6 +3,7 @@ package com.project.api.rest.model.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 @ToString
 @Entity
 @Table(name = "POST")
-public class Post {
+public class Post extends RepresentationModel<Post> {
     @Id
     private int id;
 

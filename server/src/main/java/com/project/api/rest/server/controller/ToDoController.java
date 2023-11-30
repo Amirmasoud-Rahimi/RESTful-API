@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/todoApi")
@@ -33,8 +37,11 @@ public class ToDoController {
     })
     @GetMapping
     @CrossOrigin //Angular CORS Error Fixing
-    public ResponseEntity<List<ToDo>> getAllToDos() {
-        return ResponseEntity.status(HttpStatus.OK).body(toDoService.getAllToDos());
+    public ResponseEntity<CollectionModel<ToDo>> getAllToDos() {
+        List<ToDo> allToDos = toDoService.getAllToDos();
+        CollectionModel<ToDo> collectionModel = CollectionModel.of(allToDos);
+        collectionModel.add(linkTo(methodOn(ToDoController.class).getAllToDos()).withSelfRel());
+        return ResponseEntity.status(HttpStatus.OK).body(collectionModel);
     }
 
     @ApiOperation(value = "getToDoListByUserIdAndCompleted", response = ResponseEntity.class)

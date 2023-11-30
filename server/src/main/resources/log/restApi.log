@@ -1,36 +1,257 @@
-2023-11-29 15:58:01.395  INFO 22744 --- [main] c.p.api.rest.server.ServerApplication    : Starting ServerApplication using Java 1.8.0_112 on DESKTOP-0AHC5A7 with PID 22744 (C:\Users\Laptopkaran\IdeaProjects\RESTful-API\server\target\classes started by Laptopkaran in C:\Users\Laptopkaran\IdeaProjects\RESTful-API)
-2023-11-29 15:58:01.397  INFO 22744 --- [main] c.p.api.rest.server.ServerApplication    : The following 1 profile is active: "h2"
-2023-11-29 15:58:01.818  INFO 22744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-11-29 15:58:01.847  INFO 22744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 3 JPA repository interfaces.
-2023-11-29 15:58:02.283  INFO 22744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-11-29 15:58:02.287  INFO 22744 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-11-29 15:58:02.288  INFO 22744 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
-2023-11-29 15:58:02.362  INFO 22744 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-11-29 15:58:02.362  INFO 22744 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 928 ms
-2023-11-29 15:58:02.379  INFO 22744 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-11-29 15:58:02.482  INFO 22744 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-11-29 15:58:02.490  INFO 22744 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:mem:default'
-2023-11-29 15:58:02.608  INFO 22744 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-11-29 15:58:02.633  INFO 22744 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-11-29 15:58:02.726  INFO 22744 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-11-29 15:58:02.785  INFO 22744 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2023-11-29 15:58:03.092  INFO 22744 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-11-29 15:58:03.099  INFO 22744 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-11-29 15:58:03.472  WARN 22744 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-11-29 15:58:03.543  INFO 22744 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2023-11-29 15:58:03.743  INFO 22744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-11-29 15:58:03.744  INFO 22744 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2023-11-29 15:58:03.753  INFO 22744 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2023-11-29 15:58:03.771  INFO 22744 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2023-11-29 15:58:04.001  INFO 22744 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCommentListByPostIdUsingGET_1
-2023-11-29 15:58:04.017  INFO 22744 --- [main] c.p.api.rest.server.ServerApplication    : Started ServerApplication in 2.911 seconds (JVM running for 3.466)
-2023-11-29 15:58:04.018  INFO 22744 --- [main] c.p.a.r.s.c.AppStartupListener           : please wait.Data is fetching from url and saving in h2 db using ExecutorService
-2023-11-29 15:58:13.962  INFO 22744 --- [main] c.p.a.r.s.c.AppStartupListener           : save data completed
-2023-11-29 15:58:14.032  INFO 22744 --- [main] c.p.api.rest.server.ServerApplication    : Hello World!, Rest Api Application just started up
-2023-11-29 15:58:14.410  INFO 22744 --- [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-11-29 15:58:14.410  INFO 22744 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-11-29 15:58:14.411  INFO 22744 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-11-29 16:01:02.785  INFO 22744 --- [http-nio-8080-exec-4] c.p.a.r.service.aop.RestApiLoggerAspect  : Method [createPost] gets called and entity saved with id : 122
-2023-11-29 16:02:39.157  INFO 22744 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-11-29 16:02:39.161  INFO 22744 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-11-29 16:02:39.165  INFO 22744 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-30 16:08:53.368  INFO 21412 --- [main] c.p.api.rest.server.ServerApplication    : Starting ServerApplication using Java 1.8.0_112 on DESKTOP-0AHC5A7 with PID 21412 (C:\Users\Laptopkaran\IdeaProjects\RESTful-API\server\target\classes started by Laptopkaran in C:\Users\Laptopkaran\IdeaProjects\RESTful-API)
+2023-11-30 16:08:53.378  INFO 21412 --- [main] c.p.api.rest.server.ServerApplication    : The following 1 profile is active: "h2"
+2023-11-30 16:08:53.989  INFO 21412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-30 16:08:54.030  INFO 21412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 3 JPA repository interfaces.
+2023-11-30 16:08:54.662  INFO 21412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-30 16:08:54.668  INFO 21412 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-30 16:08:54.668  INFO 21412 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-30 16:08:54.764  INFO 21412 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-30 16:08:54.764  INFO 21412 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1324 ms
+2023-11-30 16:08:54.784  INFO 21412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-30 16:08:54.975  INFO 21412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-30 16:08:54.983  INFO 21412 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:mem:default'
+2023-11-30 16:08:55.109  INFO 21412 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-30 16:08:55.147  INFO 21412 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-11-30 16:08:55.314  INFO 21412 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-11-30 16:08:55.417  INFO 21412 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-11-30 16:08:55.854  INFO 21412 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-30 16:08:55.862  INFO 21412 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-30 16:08:56.298  WARN 21412 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-30 16:08:56.419  INFO 21412 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-11-30 16:08:56.626  WARN 21412 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'linkDiscoverers' defined in class path resource [org/springframework/hateoas/config/HateoasConfiguration.class]: Unsatisfied dependency expressed through method 'linkDiscoverers' parameter 0; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type 'org.springframework.plugin.core.PluginRegistry<org.springframework.hateoas.client.LinkDiscoverer, org.springframework.http.MediaType>' available: expected single matching bean but found 17: modelBuilderPluginRegistry,modelPropertyBuilderPluginRegistry,typeNameProviderPluginRegistry,syntheticModelProviderPluginRegistry,documentationPluginRegistry,apiListingBuilderPluginRegistry,operationBuilderPluginRegistry,parameterBuilderPluginRegistry,expandedParameterBuilderPluginRegistry,resourceGroupingStrategyRegistry,operationModelsProviderPluginRegistry,defaultsProviderPluginRegistry,pathDecoratorRegistry,apiListingScannerPluginRegistry,relProviderPluginRegistry,linkDiscovererRegistry,entityLinksPluginRegistry
+2023-11-30 16:08:56.629  INFO 21412 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-30 16:08:56.630  INFO 21412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-30 16:08:56.632  INFO 21412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-30 16:08:56.633  INFO 21412 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-11-30 16:08:56.641  INFO 21412 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-11-30 16:08:56.657 ERROR 21412 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method linkDiscoverers in org.springframework.hateoas.config.HateoasConfiguration required a single bean, but 17 were found:
+	- modelBuilderPluginRegistry: defined in unknown location
+	- modelPropertyBuilderPluginRegistry: defined in unknown location
+	- typeNameProviderPluginRegistry: defined in unknown location
+	- syntheticModelProviderPluginRegistry: defined in unknown location
+	- documentationPluginRegistry: defined in unknown location
+	- apiListingBuilderPluginRegistry: defined in unknown location
+	- operationBuilderPluginRegistry: defined in unknown location
+	- parameterBuilderPluginRegistry: defined in unknown location
+	- expandedParameterBuilderPluginRegistry: defined in unknown location
+	- resourceGroupingStrategyRegistry: defined in unknown location
+	- operationModelsProviderPluginRegistry: defined in unknown location
+	- defaultsProviderPluginRegistry: defined in unknown location
+	- pathDecoratorRegistry: defined in unknown location
+	- apiListingScannerPluginRegistry: defined in unknown location
+	- relProviderPluginRegistry: defined by method 'relProviderPluginRegistry' in class path resource [org/springframework/hateoas/config/HateoasConfiguration.class]
+	- linkDiscovererRegistry: defined in unknown location
+	- entityLinksPluginRegistry: defined by method 'entityLinksPluginRegistry' in class path resource [org/springframework/hateoas/config/WebMvcEntityLinksConfiguration.class]
+
+
+Action:
+
+Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans, or using @Qualifier to identify the bean that should be consumed
+
+2023-11-30 16:11:38.847  INFO 20600 --- [main] c.p.api.rest.server.ServerApplication    : Starting ServerApplication using Java 1.8.0_112 on DESKTOP-0AHC5A7 with PID 20600 (C:\Users\Laptopkaran\IdeaProjects\RESTful-API\server\target\classes started by Laptopkaran in C:\Users\Laptopkaran\IdeaProjects\RESTful-API)
+2023-11-30 16:11:38.849  INFO 20600 --- [main] c.p.api.rest.server.ServerApplication    : The following 1 profile is active: "h2"
+2023-11-30 16:11:39.472  INFO 20600 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-30 16:11:39.551  INFO 20600 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 3 JPA repository interfaces.
+2023-11-30 16:11:40.161  INFO 20600 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-30 16:11:40.166  INFO 20600 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-30 16:11:40.166  INFO 20600 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-30 16:11:40.256  INFO 20600 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-30 16:11:40.257  INFO 20600 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1365 ms
+2023-11-30 16:11:40.279  INFO 20600 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-30 16:11:40.414  INFO 20600 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-30 16:11:40.424  INFO 20600 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:mem:default'
+2023-11-30 16:11:40.536  INFO 20600 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-30 16:11:40.564  INFO 20600 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-11-30 16:11:40.675  INFO 20600 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-11-30 16:11:40.738  INFO 20600 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-11-30 16:11:41.215  INFO 20600 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-30 16:11:41.225  INFO 20600 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-30 16:11:41.726  WARN 20600 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-30 16:11:41.870  INFO 20600 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-11-30 16:11:42.077  WARN 20600 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'linkDiscoverers' defined in class path resource [org/springframework/hateoas/config/HateoasConfiguration.class]: Unsatisfied dependency expressed through method 'linkDiscoverers' parameter 0; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type 'org.springframework.plugin.core.PluginRegistry<org.springframework.hateoas.client.LinkDiscoverer, org.springframework.http.MediaType>' available: expected single matching bean but found 17: modelBuilderPluginRegistry,modelPropertyBuilderPluginRegistry,typeNameProviderPluginRegistry,syntheticModelProviderPluginRegistry,documentationPluginRegistry,apiListingBuilderPluginRegistry,operationBuilderPluginRegistry,parameterBuilderPluginRegistry,expandedParameterBuilderPluginRegistry,resourceGroupingStrategyRegistry,operationModelsProviderPluginRegistry,defaultsProviderPluginRegistry,pathDecoratorRegistry,apiListingScannerPluginRegistry,relProviderPluginRegistry,linkDiscovererRegistry,entityLinksPluginRegistry
+2023-11-30 16:11:42.079  INFO 20600 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-30 16:11:42.081  INFO 20600 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-30 16:11:42.082  INFO 20600 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-30 16:11:42.084  INFO 20600 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-11-30 16:11:42.092  INFO 20600 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-11-30 16:11:42.109 ERROR 20600 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method linkDiscoverers in org.springframework.hateoas.config.HateoasConfiguration required a single bean, but 17 were found:
+	- modelBuilderPluginRegistry: defined in unknown location
+	- modelPropertyBuilderPluginRegistry: defined in unknown location
+	- typeNameProviderPluginRegistry: defined in unknown location
+	- syntheticModelProviderPluginRegistry: defined in unknown location
+	- documentationPluginRegistry: defined in unknown location
+	- apiListingBuilderPluginRegistry: defined in unknown location
+	- operationBuilderPluginRegistry: defined in unknown location
+	- parameterBuilderPluginRegistry: defined in unknown location
+	- expandedParameterBuilderPluginRegistry: defined in unknown location
+	- resourceGroupingStrategyRegistry: defined in unknown location
+	- operationModelsProviderPluginRegistry: defined in unknown location
+	- defaultsProviderPluginRegistry: defined in unknown location
+	- pathDecoratorRegistry: defined in unknown location
+	- apiListingScannerPluginRegistry: defined in unknown location
+	- relProviderPluginRegistry: defined by method 'relProviderPluginRegistry' in class path resource [org/springframework/hateoas/config/HateoasConfiguration.class]
+	- linkDiscovererRegistry: defined in unknown location
+	- entityLinksPluginRegistry: defined by method 'entityLinksPluginRegistry' in class path resource [org/springframework/hateoas/config/WebMvcEntityLinksConfiguration.class]
+
+
+Action:
+
+Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans, or using @Qualifier to identify the bean that should be consumed
+
+2023-11-30 16:22:21.411  INFO 11176 --- [main] c.p.api.rest.server.ServerApplication    : Starting ServerApplication using Java 1.8.0_112 on DESKTOP-0AHC5A7 with PID 11176 (C:\Users\Laptopkaran\IdeaProjects\RESTful-API\server\target\classes started by Laptopkaran in C:\Users\Laptopkaran\IdeaProjects\RESTful-API)
+2023-11-30 16:22:21.414  INFO 11176 --- [main] c.p.api.rest.server.ServerApplication    : The following 1 profile is active: "h2"
+2023-11-30 16:22:21.903  INFO 11176 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-30 16:22:21.934  INFO 11176 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 3 JPA repository interfaces.
+2023-11-30 16:22:22.395  INFO 11176 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-30 16:22:22.401  INFO 11176 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-30 16:22:22.401  INFO 11176 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-30 16:22:22.486  INFO 11176 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-30 16:22:22.487  INFO 11176 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1031 ms
+2023-11-30 16:22:22.504  INFO 11176 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-30 16:22:22.627  INFO 11176 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-30 16:22:22.635  INFO 11176 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:mem:default'
+2023-11-30 16:22:22.745  INFO 11176 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-30 16:22:22.770  INFO 11176 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-11-30 16:22:22.871  INFO 11176 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-11-30 16:22:22.936  INFO 11176 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-11-30 16:22:23.296  INFO 11176 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-30 16:22:23.305  INFO 11176 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-30 16:22:23.696  WARN 11176 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-30 16:22:23.772  INFO 11176 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-11-30 16:22:23.995  INFO 11176 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-30 16:22:23.996  INFO 11176 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-11-30 16:22:24.009  INFO 11176 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-11-30 16:22:24.166  INFO 11176 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-11-30 16:22:24.279  INFO 11176 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCommentListByPostIdUsingGET_1
+2023-11-30 16:22:24.298  INFO 11176 --- [main] c.p.api.rest.server.ServerApplication    : Started ServerApplication in 3.222 seconds (JVM running for 3.791)
+2023-11-30 16:22:24.300  INFO 11176 --- [main] c.p.a.r.s.c.AppStartupListener           : please wait.Data is fetching from url and saving in h2 db using ExecutorService
+2023-11-30 16:22:28.194  INFO 11176 --- [main] c.p.a.r.s.c.AppStartupListener           : save data completed
+2023-11-30 16:22:28.266  INFO 11176 --- [main] c.p.api.rest.server.ServerApplication    : Hello World!, Rest Api Application just started up
+2023-11-30 16:22:28.605  INFO 11176 --- [http-nio-8080-exec-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-30 16:22:28.606  INFO 11176 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-11-30 16:22:28.607  INFO 11176 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-11-30 16:26:05.726  INFO 11176 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-30 16:26:05.727  INFO 11176 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-30 16:26:05.729  INFO 11176 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-30 16:26:09.906  INFO 15964 --- [main] c.p.api.rest.server.ServerApplication    : Starting ServerApplication using Java 1.8.0_112 on DESKTOP-0AHC5A7 with PID 15964 (C:\Users\Laptopkaran\IdeaProjects\RESTful-API\server\target\classes started by Laptopkaran in C:\Users\Laptopkaran\IdeaProjects\RESTful-API)
+2023-11-30 16:26:09.908  INFO 15964 --- [main] c.p.api.rest.server.ServerApplication    : The following 1 profile is active: "h2"
+2023-11-30 16:26:10.375  INFO 15964 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-30 16:26:10.410  INFO 15964 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 3 JPA repository interfaces.
+2023-11-30 16:26:10.876  INFO 15964 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-30 16:26:10.880  INFO 15964 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-30 16:26:10.880  INFO 15964 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-30 16:26:10.968  INFO 15964 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-30 16:26:10.968  INFO 15964 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1020 ms
+2023-11-30 16:26:10.993  INFO 15964 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-30 16:26:11.111  INFO 15964 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-30 16:26:11.119  INFO 15964 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:mem:default'
+2023-11-30 16:26:11.227  INFO 15964 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-30 16:26:11.255  INFO 15964 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-11-30 16:26:11.354  INFO 15964 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-11-30 16:26:11.419  INFO 15964 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-11-30 16:26:11.782  INFO 15964 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-30 16:26:11.791  INFO 15964 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-30 16:26:12.179  WARN 15964 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-30 16:26:12.257  INFO 15964 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-11-30 16:26:12.477  INFO 15964 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-30 16:26:12.478  INFO 15964 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-11-30 16:26:12.487  INFO 15964 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-11-30 16:26:12.638  INFO 15964 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-11-30 16:26:12.742  INFO 15964 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCommentListByPostIdUsingGET_1
+2023-11-30 16:26:12.758  INFO 15964 --- [main] c.p.api.rest.server.ServerApplication    : Started ServerApplication in 3.176 seconds (JVM running for 3.772)
+2023-11-30 16:26:12.761  INFO 15964 --- [main] c.p.a.r.s.c.AppStartupListener           : please wait.Data is fetching from url and saving in h2 db using ExecutorService
+2023-11-30 16:26:26.156  INFO 15964 --- [main] c.p.a.r.s.c.AppStartupListener           : save data completed
+2023-11-30 16:26:26.236  INFO 15964 --- [main] c.p.api.rest.server.ServerApplication    : Hello World!, Rest Api Application just started up
+2023-11-30 16:26:26.647  INFO 15964 --- [http-nio-8080-exec-9] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-30 16:26:26.647  INFO 15964 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-11-30 16:26:26.648  INFO 15964 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-11-30 16:29:59.059  INFO 15964 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-30 16:29:59.061  INFO 15964 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-30 16:29:59.063  INFO 15964 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-30 16:32:08.991  INFO 14912 --- [main] c.p.api.rest.server.ServerApplication    : Starting ServerApplication using Java 1.8.0_112 on DESKTOP-0AHC5A7 with PID 14912 (C:\Users\Laptopkaran\IdeaProjects\RESTful-API\server\target\classes started by Laptopkaran in C:\Users\Laptopkaran\IdeaProjects\RESTful-API)
+2023-11-30 16:32:08.994  INFO 14912 --- [main] c.p.api.rest.server.ServerApplication    : The following 1 profile is active: "h2"
+2023-11-30 16:32:09.482  INFO 14912 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-30 16:32:09.515  INFO 14912 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 3 JPA repository interfaces.
+2023-11-30 16:32:09.995  INFO 14912 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-30 16:32:10.000  INFO 14912 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-30 16:32:10.000  INFO 14912 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-30 16:32:10.083  INFO 14912 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-30 16:32:10.083  INFO 14912 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1042 ms
+2023-11-30 16:32:10.103  INFO 14912 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-30 16:32:10.232  INFO 14912 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-30 16:32:10.240  INFO 14912 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:mem:default'
+2023-11-30 16:32:10.345  INFO 14912 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-30 16:32:10.373  INFO 14912 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-11-30 16:32:10.466  INFO 14912 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-11-30 16:32:10.529  INFO 14912 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-11-30 16:32:10.904  INFO 14912 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-30 16:32:10.913  INFO 14912 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-30 16:32:11.313  WARN 14912 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-30 16:32:11.390  INFO 14912 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-11-30 16:32:11.615  INFO 14912 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-30 16:32:11.616  INFO 14912 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-11-30 16:32:11.626  INFO 14912 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-11-30 16:32:11.758  INFO 14912 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-11-30 16:32:11.851  INFO 14912 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCommentListByPostIdUsingGET_1
+2023-11-30 16:32:11.873  INFO 14912 --- [main] c.p.api.rest.server.ServerApplication    : Started ServerApplication in 3.221 seconds (JVM running for 3.941)
+2023-11-30 16:32:11.876  INFO 14912 --- [main] c.p.a.r.s.c.AppStartupListener           : please wait.Data is fetching from url and saving in h2 db using ExecutorService
+2023-11-30 16:32:14.457  INFO 14912 --- [main] c.p.a.r.s.c.AppStartupListener           : save data completed
+2023-11-30 16:32:14.524  INFO 14912 --- [main] c.p.api.rest.server.ServerApplication    : Hello World!, Rest Api Application just started up
+2023-11-30 16:32:14.767  INFO 14912 --- [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-30 16:32:14.767  INFO 14912 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-11-30 16:32:14.768  INFO 14912 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-11-30 16:34:08.635  INFO 14912 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-30 16:34:08.637  INFO 14912 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-30 16:34:08.638  INFO 14912 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-30 16:34:14.684  INFO 15060 --- [main] c.p.api.rest.server.ServerApplication    : Starting ServerApplication using Java 1.8.0_112 on DESKTOP-0AHC5A7 with PID 15060 (C:\Users\Laptopkaran\IdeaProjects\RESTful-API\server\target\classes started by Laptopkaran in C:\Users\Laptopkaran\IdeaProjects\RESTful-API)
+2023-11-30 16:34:14.686  INFO 15060 --- [main] c.p.api.rest.server.ServerApplication    : The following 1 profile is active: "h2"
+2023-11-30 16:34:15.188  INFO 15060 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-30 16:34:15.228  INFO 15060 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 3 JPA repository interfaces.
+2023-11-30 16:34:15.707  INFO 15060 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-30 16:34:15.714  INFO 15060 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-30 16:34:15.714  INFO 15060 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2023-11-30 16:34:15.809  INFO 15060 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-30 16:34:15.809  INFO 15060 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1083 ms
+2023-11-30 16:34:15.829  INFO 15060 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-30 16:34:15.973  INFO 15060 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-30 16:34:15.980  INFO 15060 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:mem:default'
+2023-11-30 16:34:16.089  INFO 15060 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-30 16:34:16.114  INFO 15060 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-11-30 16:34:16.209  INFO 15060 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-11-30 16:34:16.276  INFO 15060 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-11-30 16:34:16.707  INFO 15060 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-30 16:34:16.716  INFO 15060 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-30 16:34:17.157  WARN 15060 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-30 16:34:17.238  INFO 15060 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-11-30 16:34:17.455  INFO 15060 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-30 16:34:17.455  INFO 15060 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-11-30 16:34:17.464  INFO 15060 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-11-30 16:34:17.618  INFO 15060 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-11-30 16:34:17.731  INFO 15060 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCommentListByPostIdUsingGET_1
+2023-11-30 16:34:17.755  INFO 15060 --- [main] c.p.api.rest.server.ServerApplication    : Started ServerApplication in 3.432 seconds (JVM running for 4.013)
+2023-11-30 16:34:17.758  INFO 15060 --- [main] c.p.a.r.s.c.AppStartupListener           : please wait.Data is fetching from url and saving in h2 db using ExecutorService
+2023-11-30 16:34:26.717  INFO 15060 --- [main] c.p.a.r.s.c.AppStartupListener           : save data completed
+2023-11-30 16:34:26.790  INFO 15060 --- [main] c.p.api.rest.server.ServerApplication    : Hello World!, Rest Api Application just started up
+2023-11-30 16:34:26.976  INFO 15060 --- [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-30 16:34:26.976  INFO 15060 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-11-30 16:34:26.977  INFO 15060 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
