@@ -25,15 +25,18 @@ public class ToDoServiceImpl implements ToDoService {
         this.toDoRepository = toDoRepository;
     }
 
+    @Override
     public List<ToDo> getAllToDos() {
         Iterable<ToDo> toDoIterable = toDoRepository.findAll();
         return Streamable.of(toDoIterable).toList();
     }
 
+    @Override
     public List<ToDo> getToDoListByUserIdAndCompleted(int userId, boolean completed) {
         return toDoRepository.getToDoByUserIdAndCompleted(userId, completed);
     }
 
+    @Override
     public List<ToDo> getToDoListFromUrl(String urlStr) throws IOException {
         URL url = new URL(urlStr);
         String json = IOUtils.toString(url, StandardCharsets.UTF_8);
@@ -42,6 +45,7 @@ public class ToDoServiceImpl implements ToDoService {
         });
     }
 
+    @Override
     public void saveToDoList() throws IOException {
         List<ToDo> toDoList = getToDoListFromUrl(toDoUrl);
         toDoRepository.saveAll(toDoList);

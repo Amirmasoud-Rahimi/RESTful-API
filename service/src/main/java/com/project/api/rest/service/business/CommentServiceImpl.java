@@ -23,27 +23,32 @@ import java.util.Optional;
 public class CommentServiceImpl implements CommentService {
     @Value("${commentUrl}")
     private String commentUrl;
+
     private final CommentRepository commentRepository;
 
     public CommentServiceImpl(CommentRepository commentRepository) {
         this.commentRepository = commentRepository;
     }
 
+    @Override
     public List<Comment> getCommentListByPagination(int pageNumber, int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         Page<Comment> page = commentRepository.findAll(pageable);
         return page.getContent();
     }
 
+    @Override
     public List<Comment> getCommentListByPostId(int postId) {
         return commentRepository.getCommentByPostId(postId);
     }
 
+    @Override
     public void createComment(CommentDto commentDto) {
         Comment comment = CommentDto.mapCommentDtoToComment(commentDto);
         commentRepository.save(comment);
     }
 
+    @Override
     public void updateCommentByCommentId(int commentId, CommentDto commentDto) {
         Optional<Comment> commentOptional = commentRepository.findById(commentId);
         if (commentOptional.isPresent()) {
@@ -52,10 +57,12 @@ public class CommentServiceImpl implements CommentService {
         }
     }
 
+    @Override
     public void deleteCommentByCommentId(int commentId) {
         commentRepository.deleteById(commentId);
     }
 
+    @Override
     public List<Comment> getCommentListFromUrl(String urlStr) throws IOException {
         URL url = new URL(urlStr);
         String json = IOUtils.toString(url, StandardCharsets.UTF_8);
@@ -64,6 +71,7 @@ public class CommentServiceImpl implements CommentService {
         });
     }
 
+    @Override
     public void saveCommentList() throws IOException {
         List<Comment> commentList = getCommentListFromUrl(commentUrl);
         commentRepository.saveAll(commentList);

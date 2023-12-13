@@ -62,8 +62,10 @@ public class PostController {
     @GetMapping("/posts/{postId}")
     public ResponseEntity<Post> getPostById(@PathVariable("postId") int postId) {
         Post post = postService.getPostById(postId);
-        post.add(linkTo(methodOn(PostController.class).getPostById(postId)).withSelfRel());
-        post.add(linkTo(methodOn(PostController.class).getAllPostsByPagination(0, 10)).withRel(IanaLinkRelations.COLLECTION));
+        if (post.getLinks().isEmpty()) {
+            post.add(linkTo(methodOn(PostController.class).getPostById(postId)).withSelfRel());
+            post.add(linkTo(methodOn(PostController.class).getAllPostsByPagination(0, 10)).withRel(IanaLinkRelations.COLLECTION));
+        }
         return ResponseEntity.status(HttpStatus.OK).body(post);
     }
 

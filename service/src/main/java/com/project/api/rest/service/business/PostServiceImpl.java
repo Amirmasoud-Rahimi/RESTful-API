@@ -16,6 +16,7 @@ import java.util.Optional;
 import com.project.api.rest.service.repository.PostRepository;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -31,26 +32,32 @@ public class PostServiceImpl implements PostService {
         this.postRepository = postRepository;
     }
 
+    @Override
     public List<Post> getPostListByPagination(int pageNumber, int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         Page<Post> page = postRepository.findAll(pageable);
         return page.getContent();
     }
 
+    @Override
+    @Cacheable(value = "postCache")
     public Post getPostById(int postId) {
         Optional<Post> postOptional = postRepository.findById(postId);
         return postOptional.orElseThrow(() -> new EntityNotFoundException("Post Not Found!"));
     }
 
+    @Override
     public List<Post> getPostListByTitle(String title) {
         return postRepository.getPostByTitleContainingIgnoreCase(title);
     }
 
+    @Override
     public void createPost(PostDto postDto) {
         Post post = PostDto.mapPostDtoToPost(postDto);
         postRepository.save(post);
     }
 
+    @Override
     public void updatePostByPostId(int postId, PostDto postDto) {
         Optional<Post> postOptional = postRepository.findById(postId);
         if (postOptional.isPresent()) {
@@ -59,10 +66,12 @@ public class PostServiceImpl implements PostService {
         }
     }
 
+    @Override
     public void deletePostByPostId(int postId) {
         postRepository.deleteById(postId);
     }
 
+    @Override
     public List<Post> getPostListFromUrl(String urlStr) throws IOException {
         URL url = new URL(urlStr);
         String json = IOUtils.toString(url, StandardCharsets.UTF_8);
@@ -71,6 +80,7 @@ public class PostServiceImpl implements PostService {
         });
     }
 
+    @Override
     public void savePostList() throws IOException {
         List<Post> postList = getPostListFromUrl(postUrl);
         postRepository.saveAll(postList);
