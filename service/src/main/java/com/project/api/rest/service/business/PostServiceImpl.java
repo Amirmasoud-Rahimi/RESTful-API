@@ -43,7 +43,7 @@ public class PostServiceImpl implements PostService {
     @Cacheable(value = "postCache")
     public Post getPostById(int postId) {
         Optional<Post> postOptional = postRepository.findById(postId);
-        return postOptional.orElseThrow(() -> new EntityNotFoundException("Post Not Found!"));
+        return postOptional.orElseThrow(() -> new EntityNotFoundException("Post Not Found!", new NullPointerException()));
     }
 
     @Override
