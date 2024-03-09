@@ -33,13 +33,13 @@ public class AppStartupListener {
     }
 
     @EventListener(ApplicationReadyEvent.class)
-    public void startupListener() throws InterruptedException, URISyntaxException, IOException {
+    public void startupListener() throws InterruptedException {
         logger.info("please wait.Data is fetching from url and saving in h2 db using ExecutorService");
         List<Callable<Void>> taskList = getCallables();
         ExecutorService executor = Executors.newFixedThreadPool(3);
         executor.invokeAll(taskList);
         logger.info("save data completed");
-        launchBrowser();
+        //launchBrowser();
     }
 
     private List<Callable<Void>> getCallables() {
